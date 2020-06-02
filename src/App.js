@@ -1,12 +1,12 @@
 import React from 'react';
 import { Provider } from 'react-redux';
-import { ToastConatiner } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import GlobalStyle from './styles/global';
 import Header from './components/Header';
 import Main from './pages/Main';
 import store from './store';
-import 'react-toastify/dist/ReactToastify.css';
 
 
 function App() {
@@ -16,7 +16,7 @@ function App() {
       <GlobalStyle />
       <Header />
       <Main />
-      <ToastConatiner autoclose={5000} />
+      <ToastContainer autoclose={5000} />
     </Provider>
   );
 }
