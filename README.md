@@ -1,5 +1,7 @@
 ## The challenge
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/273e33f2-5cf7-4fa0-bc67-7f10c5fece56/deploy-status)](https://app.netlify.com/sites/where-are-you-from/deploys)
+
 Your challenge is to integrate with the [REST Countries API](https://restcountries.eu) to pull country data and display it like in the designs.
 
 You can use any JavaScript framework/library on the front-end such as [React](https://reactjs.org). You also have complete control over which packages you use to do things like make HTTP requests or style your project.
