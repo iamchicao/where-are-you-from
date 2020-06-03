@@ -16,7 +16,7 @@ export const Container = styled.div`
     color: ${props => (props.darkMode ? colors.white : colors.veryDarkBlueTxt)};
     font-weight: bold;
     font-size: 18px;
-    margin: 0 20px;
+    padding: 0 20px;
   }
 `;
 
