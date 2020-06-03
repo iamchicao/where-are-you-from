@@ -13,15 +13,13 @@ export const Container = styled.div`
 `;
 
 export const TopBar = styled.div`
-  margin-top: 40px;
   margin: 40px;
   padding: 0 20px;
-  margin-top: 40px;
   width: 90%;
   display: flex;
   align-items: center;
   justify-content: space-between;
-`;
+  `;
 
 export const Search = styled.div`
   display: flex;
