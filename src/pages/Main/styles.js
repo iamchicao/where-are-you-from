@@ -29,20 +29,26 @@ export const Search = styled.div`
   border-radius: 5px;
   height: 50px;
   width: 400px;
-  background: #fff url(${SearchIcon}) no-repeat 25px center;
+  background: ${props => (props.darkMode ? colors.darkBlue : colors.white)}
+    url(${SearchIcon}) no-repeat 25px center;
+  color: ${props => (props.darkMode ? colors.white : colors.darkGray)};
   padding: 6px 7px 6px 60px;
   input {
     flex: 1;
     font-size: 18px;
     color: ${props => (props.darkMode ? colors.white : colors.darkGray)};
+    background: ${props => (props.darkMode ? colors.darkBlue : colors.white)};
     border: 0;
   }
 `;
 
-export const Select = styled.select`
+export const Divao = styled.div`
+  height: 30px;
+  width: 200px;
+`;
+
+export const SelectDiv = styled.div`
   border-radius: 5px;
-  background: white;
-  height: 50px;
   width: 200px;
 `;
 

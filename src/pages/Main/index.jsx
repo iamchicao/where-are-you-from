@@ -2,14 +2,16 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import Select from 'react-select';
 
 import { Creators as CountriesActions } from '../../store/ducks/countries';
+import colors from '../../styles/colors';
 
 import {
   Container,
   TopBar,
   Search,
-  Select,
+  SelectDiv,
   Content,
   Country,
   Img,
@@ -37,7 +39,7 @@ class Main extends Component {
 
   state = {
     name: '',
-    option: '',
+    option: { value: '', label: 'No Filter' },
   };
 
   componentDidMount() {
@@ -51,19 +53,45 @@ class Main extends Component {
 
   changeName = e => {
     const { value } = e.target;
-    this.setState({ name: value, option: '' });
+    this.setState({ name: value, option: { value: '', label: 'No Filter' } });
     this.fetchCountries(value, '');
   };
 
   changeFilter = e => {
-    const { value } = e.target;
-    this.setState({ option: value, name: '' });
-    this.fetchCountries('', value);
+    this.setState({ option: e, name: '' });
+    this.fetchCountries('', e.value);
   };
 
   render() {
     const { countries } = this.props;
     const { name, option } = this.state;
+    const options = [
+      { value: '', label: 'No Filter' },
+      { value: 'Africa', label: 'Africa' },
+      { value: 'Americas', label: 'Americas' },
+      { value: 'Asia', label: 'Asia' },
+      { value: 'Europe', label: 'Europe' },
+      { value: 'Oceania', label: 'Oceania' },
+    ];
+    const selectStyles = {
+      control: styles => ({
+        ...styles,
+        backgroundColor: countries.darkMode ? colors.darkBlue : colors.white,
+        color: countries.darkMode ? colors.white : colors.veryDarkBlueTxt,
+        boxShadow: '0px 0px 2px rgba(0, 0, 0, 0.17)',
+        border: 'none',
+      }),
+      option: styles => ({
+        ...styles,
+        backgroundColor: countries.darkMode ? colors.darkBlue : colors.white,
+        color: countries.darkMode ? colors.white : colors.veryDarkBlueTxt,
+      }),
+      singleValue: styles => ({
+        ...styles,
+        backgroundColor: countries.darkMode ? colors.darkBlue : colors.white,
+        color: countries.darkMode ? colors.white : colors.veryDarkBlueTxt,
+      }),
+    };
     return (
       <Container darkMode={countries.darkMode}>
         <TopBar>
@@ -74,14 +102,15 @@ class Main extends Component {
               value={name}
             />
           </Search>
-          <Select onChange={this.changeFilter} value={option}>
-            <option value="">No filter</option>
-            <option value="Africa">Africa</option>
-            <option value="Americas">Americas</option>
-            <option value="Asia">Asia</option>
-            <option value="Europe">Europe</option>
-            <option value="Oceania">Oceania</option>
-          </Select>
+          <SelectDiv>
+            <Select
+              options={options}
+              isSearchable={false}
+              value={option}
+              onChange={this.changeFilter}
+              styles={selectStyles}
+            />
+          </SelectDiv>
         </TopBar>
         <Content>
           {countries.data.map(country => (

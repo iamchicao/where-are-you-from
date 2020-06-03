@@ -18,6 +18,9 @@ import {
   Side,
   Data,
   Border,
+  Title,
+  P,
+  BorderCountry,
 } from './styles';
 
 class Details extends Component {
@@ -48,8 +51,14 @@ class Details extends Component {
 
   componentDidMount() {
     const { match, getDetails } = this.props;
+    this.loadCountry(decodeURIComponent(match.params.country));
     getDetails(decodeURIComponent(match.params.country));
   }
+
+  loadCountry = country => {
+    const { getDetails } = this.props;
+    getDetails(country);
+  };
 
   render() {
     const { details, countries } = this.props;
@@ -94,10 +103,20 @@ class Details extends Component {
                   </Data>
                 </Side>
               </MinorInfo>
-              <Border>
-                <Data darkMode={countries.darkMode}>
-                  Border Countries:<p>{details.borders}</p>
-                </Data>
+              <Border darkMode={countries.darkMode}>
+                <Title>Border Countries:</Title>
+                <P>
+                  {details.borders &&
+                    details.borders.map(border => (
+                      <BorderCountry
+                        darkMode={countries.darkMode}
+                        to={`/details/${encodeURIComponent(border)}`}
+                        onClick={() => this.loadCountry(border)}
+                      >
+                        {border}
+                      </BorderCountry>
+                    ))}
+                </P>
               </Border>
             </Info>
           </Wrapper>

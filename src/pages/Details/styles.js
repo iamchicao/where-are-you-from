@@ -99,5 +99,33 @@ export const Data = styled.p`
 export const Border = styled.div`
   display: flex;
   align-items: center;
+  justify-content: flex-start;
+  padding: 5px;
+  font-size: 16px;
+  font-weight: bold;
+  color: ${props => (props.darkMode ? colors.white : colors.veryDarkBlueTxt)};
+`;
+
+export const Title = styled.div`
+  width: 190px;
+`;
+
+export const P = styled.p`
+  display: flex;
+  align-items: center;
   justify-content: center;
+  flex-wrap: wrap;
+  font-weight: normal;
+  width: 100%;
+`;
+
+export const BorderCountry = styled(Link)`
+  text-decoration: none;
+  padding: 5px 10px;
+  margin: 5px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.17);
+  color: ${props => (props.darkMode ? colors.white : colors.veryDarkBlueTxt)};
+  font-size: 14px;
+  background: ${props => (props.darkMode ? colors.darkBlue : colors.white)};
 `;
