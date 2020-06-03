@@ -34,10 +34,11 @@ export const BackArrow = styled(Link)`
   background: ${props =>
     props.darkMode ? colors.darkBlue : colors.veryLightGray};
   color: ${props => (props.darkMode ? colors.white : colors.veryDarkBlueTxt)};
+`;
 
-  > img {
-    width: 20px;
-  }
+export const Icon = styled.i`
+  font-size: 18px;
+  color: ${props => (props.darkMode ? colors.white : colors.veryDarkBlueTxt)};
 `;
 
 export const Wrapper = styled.div`
