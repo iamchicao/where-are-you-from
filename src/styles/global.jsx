@@ -13,6 +13,7 @@ export default createGlobalStyle`
     min-height: 100%;
     display: flex;
     flex-flow: column;
+    flex: 1;
   }
 
   body {

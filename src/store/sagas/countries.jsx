@@ -11,7 +11,7 @@ export function* getCountries(action) {
         api.get,
         '/all?fields=name;flag;region;capital;population'
       );
-      toast.success("Countries found", {
+      toast.success('Countries found', {
         position: toast.POSITION.TOP_RIGHT,
       });
       yield put(CountriesCreators.getCountriesSuccess(data));
@@ -20,7 +20,7 @@ export function* getCountries(action) {
         api.get,
         `/region/${filter}?fields=name;flag;region;capital;population`
       );
-      toast.success("Countries found", {
+      toast.success('Countries found', {
         position: toast.POSITION.TOP_RIGHT,
       });
       yield put(CountriesCreators.getCountriesSuccess(data));
@@ -29,13 +29,13 @@ export function* getCountries(action) {
         api.get,
         `name/${name}?fields=name;flag;region;capital;population`
       );
-      toast.success("Countries found", {
+      toast.success('Countries found', {
         position: toast.POSITION.TOP_RIGHT,
       });
       yield put(CountriesCreators.getCountriesSuccess(data));
     }
   } catch (err) {
-    toast.error("No countries found for these filters", {
+    toast.error('No countries found for these filters', {
       position: toast.POSITION.TOP_RIGHT,
     });
   }

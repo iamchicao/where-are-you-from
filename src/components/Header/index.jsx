@@ -9,7 +9,7 @@ import { Creators as CountriesActions } from '../../store/ducks/countries';
 const Header = ({ toggleDarkMode, countries }) => (
   <Container darkMode={countries.darkMode}>
     <div>
-      <p>Where are you from?</p>
+      <p>Where in the world?</p>
       <ToggleButton onClick={toggleDarkMode} darkMode={countries.darkMode}>
         <Icon className="fa fa-moon-o" />
         Dark mode

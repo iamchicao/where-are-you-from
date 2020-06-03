@@ -1,10 +1,12 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+
 import SearchIcon from '../../assets/images/search.svg';
 import colors from '../../styles/colors';
 
 export const Container = styled.div`
   background: ${props =>
-    props.darkMode ? colors.veryDarkBlueBg : colors.veryLightGrey};
+    props.darkMode ? colors.veryDarkBlueBg : colors.veryLightGray};
   display: flex;
   flex-grow: 1;
   flex-direction: column;
@@ -19,7 +21,7 @@ export const TopBar = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  `;
+`;
 
 export const Search = styled.div`
   display: flex;
@@ -32,7 +34,7 @@ export const Search = styled.div`
   input {
     flex: 1;
     font-size: 18px;
-    color: ${props => (props.darkMode ? colors.white : colors.darkGrey)};
+    color: ${props => (props.darkMode ? colors.white : colors.darkGray)};
     border: 0;
   }
 `;
@@ -52,7 +54,8 @@ export const Content = styled.div`
   flex-wrap: wrap;
 `;
 
-export const Country = styled.div`
+export const Country = styled(Link)`
+  text-decoration: none;
   height: 360px;
   width: 260px;
   margin: 40px 20px 0;
@@ -61,6 +64,7 @@ export const Country = styled.div`
   display: flex;
   flex-direction: column;
   box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.17);
+  cursor: pointer;
 `;
 
 export const Img = styled.img`

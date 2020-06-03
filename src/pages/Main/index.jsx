@@ -49,14 +49,14 @@ class Main extends Component {
     getCountries(name, filter);
   };
 
-  changeName = event => {
-    const { value } = event.target;
+  changeName = e => {
+    const { value } = e.target;
     this.setState({ name: value, option: '' });
     this.fetchCountries(value, '');
   };
 
-  changeFilter = event => {
-    const { value } = event.target;
+  changeFilter = e => {
+    const { value } = e.target;
     this.setState({ option: value, name: '' });
     this.fetchCountries('', value);
   };
@@ -85,7 +85,11 @@ class Main extends Component {
         </TopBar>
         <Content>
           {countries.data.map(country => (
-            <Country key={country.name} darkMode={countries.darkMode}>
+            <Country
+              key={country.name}
+              darkMode={countries.darkMode}
+              to={`/details/${encodeURIComponent(country.name)}`}
+            >
               <Img src={country.flag} alt="img" />
               <Info>
                 <Name darkMode={countries.darkMode}>{country.name}</Name>
