@@ -1,9 +1,9 @@
-import React, { Component } from "react";
-import { bindActionCreators } from "redux";
-import { connect } from "react-redux";
-import PropTypes from "prop-types";
+import React, { Component } from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
-import { Creators as CountriesActions } from "../../store/ducks/countries";
+import { Creators as CountriesActions } from '../../store/ducks/countries';
 
 import {
   Container,
@@ -16,7 +16,7 @@ import {
   Info,
   Name,
   Data,
-} from './style';
+} from './styles';
 
 class Main extends Component {
   static propTypes = {
@@ -31,42 +31,43 @@ class Main extends Component {
           capital: PropTypes.string,
         })
       ),
+      darkMode: PropTypes.bool.isRequired,
     }).isRequired,
   };
 
   state = {
-    name: "",
-    option: "",
+    name: '',
+    option: '',
   };
 
   componentDidMount() {
     this.fetchCountries();
   }
 
-  fetchCountries = (name = "", filter = "") => {
+  fetchCountries = (name = '', filter = '') => {
     const { getCountries } = this.props;
     getCountries(name, filter);
   };
 
-  changeName = (e) => {
+  changeName = e => {
     const { value } = e.target;
-    this.setState({ name: value, option: "" });
-    this.fetchCountries(value, "");
+    this.setState({ name: value, option: '' });
+    this.fetchCountries(value, '');
   };
 
-  changeFilter = (e) => {
+  changeFilter = e => {
     const { value } = e.target;
-    this.setState({ option: value, name: "" });
-    this.fetchCountries("", value);
+    this.setState({ option: value, name: '' });
+    this.fetchCountries('', value);
   };
 
   render() {
     const { countries } = this.props;
     const { name, option } = this.state;
     return (
-      <Container>
+      <Container darkMode={countries.darkMode}>
         <TopBar>
-          <Search>
+          <Search darkMode={countries.darkMode}>
             <input
               placeholder="Search for a country..."
               onChange={this.changeName}
@@ -83,19 +84,19 @@ class Main extends Component {
           </Select>
         </TopBar>
         <Content>
-          {countries.data.map((country) => (
-            <Country key={country.name}>
+          {countries.data.map(country => (
+            <Country key={country.name} darkMode={countries.darkMode}>
               <Img src={country.flag} alt="img" />
               <Info>
-                <Name>{country.name}</Name>
-                <Data>
+                <Name darkMode={countries.darkMode}>{country.name}</Name>
+                <Data darkMode={countries.darkMode}>
                   Population:<p>{country.population}</p>
                 </Data>
-                <Data>
+                <Data darkMode={countries.darkMode}>
                   Region:<p>{country.region}</p>
                 </Data>
 
-                <Data>
+                <Data darkMode={countries.darkMode}>
                   Capital:<p>{country.capital}</p>
                 </Data>
               </Info>
@@ -107,11 +108,14 @@ class Main extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   countries: state.countries,
 });
 
-const mapDispatchToProps = (dispatch) =>
+const mapDispatchToProps = dispatch =>
   bindActionCreators(CountriesActions, dispatch);
 
-export default connect(mapStateToProps, mapDispatchToProps)(Main);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Main);

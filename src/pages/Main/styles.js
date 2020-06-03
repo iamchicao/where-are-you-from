@@ -3,7 +3,8 @@ import SearchIcon from '../../assets/images/search.svg';
 import colors from '../../styles/colors';
 
 export const Container = styled.div`
-  background: ${colors.veryLightGrey};
+  background: ${props =>
+    props.darkMode ? colors.veryDarkBlueBg : colors.veryLightGrey};
   display: flex;
   flex-grow: 1;
   flex-direction: column;
@@ -30,7 +31,7 @@ export const Search = styled.div`
   input {
     flex: 1;
     font-size: 18px;
-    color: ${colors.darkGrey};
+    color: ${props => (props.darkMode ? colors.white : colors.darkGrey)};
     border: 0;
   }
 `;
@@ -55,9 +56,10 @@ export const Country = styled.div`
   width: 300px;
   margin: 40px 40px 0 0;
   border-radius: 15px;
-  background: ${colors.white};
+  background: ${props => (props.darkMode ? colors.darkBlue : colors.white)};
   display: flex;
   flex-direction: column;
+  box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.17);
 `;
 
 export const Img = styled.img`
@@ -75,7 +77,7 @@ export const Name = styled.p`
   font-weight: bold;
   padding: 30px 20px 10px;
   font-size: 20px;
-  color: ${colors.veryDarkBlueTxt};
+  color: ${props => (props.darkMode ? colors.white : colors.veryDarkBlueTxt)};
 `;
 
 export const Data = styled.p`
@@ -83,7 +85,7 @@ export const Data = styled.p`
   font-weight: bold;
   padding: 5px 20px;
   font-size: 14px;
-  color: ${colors.veryDarkBlueTxt};
+  color: ${props => (props.darkMode ? colors.white : colors.veryDarkBlueTxt)};
   p {
     margin-left: 5px;
     font-weight: normal;

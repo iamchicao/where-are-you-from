@@ -3,9 +3,9 @@
  */
 
 export const Types = {
-  GET_COUNTRIES_REQUEST: "countries/GET_REQUEST",
-  GET_COUNTRIES_SUCCESS: "countries/GET_SUCCESS",
-  TOGGLE_DARK_MODE: "dark_mode/TOGGLE",
+  GET_COUNTRIES_REQUEST: 'countries/GET_REQUEST',
+  GET_COUNTRIES_SUCCESS: 'countries/GET_SUCCESS',
+  TOGGLE_DARK_MODE: 'dark_mode/TOGGLE',
 };
 
 /**
@@ -32,11 +32,11 @@ export default function tools(state = INITIAL_STATE, action) {
  */
 
 export const Creators = {
-  getCountries: (name = "", filter = "") => ({
+  getCountries: (name = '', filter = '') => ({
     type: Types.GET_COUNTRIES_REQUEST,
     payload: { name, filter },
   }),
-  getCountriesSuccess: (data) => ({
+  getCountriesSuccess: data => ({
     type: Types.GET_COUNTRIES_SUCCESS,
     payload: { data },
   }),
