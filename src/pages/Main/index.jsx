@@ -49,14 +49,14 @@ class Main extends Component {
     getCountries(name, filter);
   };
 
-  changeName = e => {
-    const { value } = e.target;
+  changeName = event => {
+    const { value } = event.target;
     this.setState({ name: value, option: '' });
     this.fetchCountries(value, '');
   };
 
-  changeFilter = e => {
-    const { value } = e.target;
+  changeFilter = event => {
+    const { value } = event.target;
     this.setState({ option: value, name: '' });
     this.fetchCountries('', value);
   };

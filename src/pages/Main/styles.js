@@ -14,6 +14,9 @@ export const Container = styled.div`
 
 export const TopBar = styled.div`
   margin-top: 40px;
+  margin: 40px;
+  padding: 0 20px;
+  margin-top: 40px;
   width: 90%;
   display: flex;
   align-items: center;
@@ -52,9 +55,9 @@ export const Content = styled.div`
 `;
 
 export const Country = styled.div`
-  height: 400px;
-  width: 300px;
-  margin: 40px 40px 0 0;
+  height: 360px;
+  width: 260px;
+  margin: 40px 20px 0;
   border-radius: 15px;
   background: ${props => (props.darkMode ? colors.darkBlue : colors.white)};
   display: flex;
@@ -63,8 +66,8 @@ export const Country = styled.div`
 `;
 
 export const Img = styled.img`
-  height: 200px;
-  width: 300px;
+  height: 180px;
+  width: 260px;
   border-radius: 5px;
 `;
 
